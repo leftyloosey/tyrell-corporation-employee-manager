@@ -13,8 +13,8 @@ class QueryFunction {
         this.showRoles = "SELECT * FROM roles"
         this.showEmployees = "SELECT * FROM employees"
         this.addDept = "INSERT INTO departments (dept_name) VALUES (?)"
-        this.addRole = "INSERT INTO roles (job_title, salary) VALUES (?)" 
-        this.addEmp = ""
+        this.addRole = "INSERT INTO roles (job_title, salary, dept_id) VALUES (?,?,?)" 
+        this.addEmp = "INSERT INTO roles (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)"
         this.updateRole = "`UPDATE roles SET review = ? WHERE id = ?`"
     }
     query(x) {
@@ -63,7 +63,7 @@ function menuQuest() {
                 break
             case data.menuChoice = 'add an employee':
                 console.log(data.menuChoice)
-                q.query(q.addEmp)
+                addEmp()
                 break
             case data.menuChoice = 'update employee role':
                 console.log(data.menuChoice)
@@ -85,7 +85,17 @@ function addDept() {
 function addRole() {
     inquirer.prompt(prompts.addRolePrompts).then((data) => {
         let params = []
-        params.push(data.roleName, data.roleSalary)
+        params.push(data.roleName, data.roleSalary, data.deptId)
+        
+        q.updateQuery(q.addRole, params)
+    })
+}
+
+function addEmp() {
+    inquirer.prompt(prompts.addEmpPrompts).then((data) => {
+        let params = []
+        params.push(data.firstName, data.lastName, data.roleId, data.managerId)
+        
         q.updateQuery(q.addRole, params)
     })
 }

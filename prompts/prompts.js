@@ -36,9 +36,43 @@ const addRolePrompts = [
         message: "and its new salary?"
         
     },
+    {
+        type: "input",
+        name: "deptId",
+        message: "department ID?"
+        
+    },
+]
+
+const addEmpPrompts = [
+    {
+        type: "input",
+        name: "firstName",
+        message: "employee's first name?"
+        
+    },
+    {
+        type: "input",
+        name: "lastName",
+        message: "last name?"
+        
+    },
+    {
+        type: "input",
+        name: "roleId",
+        message: "role?"
+        
+    },
+    {
+        type: "input",
+        name: "managerId",
+        message: "manager ID?"
+        
+    },
 ]
 
 
 exports.menuPrompts = menuPrompts
 exports.addDeptPrompts = addDeptPrompts
 exports.addRolePrompts = addRolePrompts
+exports.addEmpPrompts = addEmpPrompts
