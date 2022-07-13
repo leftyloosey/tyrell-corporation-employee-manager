@@ -1,8 +1,6 @@
 const inquirer = require("inquirer")
 const prompts = require("/Users/davidhardin/Desktop/ch/ch12b/prompts/prompts")
-const cTable = require('console.table');
-// const db = require("/Users/davidhardin/Desktop/ch/ch12b/db/connection.js")
-// const mysql = require('mysql2');
+const cTable = require('console.table')
 const { db } = require("/Users/davidhardin/Desktop/ch/ch12b/db/connection.js")
 
 
@@ -14,8 +12,8 @@ class QueryFunction {
         this.showEmployees = "SELECT * FROM employees"
         this.addDept = "INSERT INTO departments (dept_name) VALUES (?)"
         this.addRole = "INSERT INTO roles (job_title, salary, dept_id) VALUES (?,?,?)" 
-        this.addEmp = "INSERT INTO roles (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)"
-        this.updateRole = "`UPDATE roles SET review = ? WHERE id = ?`"
+        this.addEmp = "INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)"
+        this.updateRole = `UPDATE roles SET job_title = ?, salary = ?, dept_id= ? WHERE id = ?`
     }
     query(x) {
         db.promise().query(x)
@@ -67,7 +65,11 @@ function menuQuest() {
                 break
             case data.menuChoice = 'update employee role':
                 console.log(data.menuChoice)
-                q.query(q.updateRole)
+                updateRole()
+                break
+            case data.menuChoice = 'quit':
+                console.log(data.menuChoice)
+                process.exit(0)
                 break
             default: 
                 console.log("no can do")
@@ -96,10 +98,17 @@ function addEmp() {
         let params = []
         params.push(data.firstName, data.lastName, data.roleId, data.managerId)
         
-        q.updateQuery(q.addRole, params)
+        q.updateQuery(q.addEmp, params)
+    })
+}
+
+function updateRole() {
+    inquirer.prompt(prompts.updateRolePrompts).then((data) => {
+        let params = []
+        params.push(data.newTitle, data.newSalary, data.newId, data.qNewId)
+        
+        q.updateQuery(q.updateRole, params)
     })
 }
 
 exports.menuQuest = menuQuest
-exports.QueryFunction = QueryFunction
-// exports.addDeptQuest = addDeptQuest

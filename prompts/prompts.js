@@ -9,7 +9,8 @@ const menuPrompts = [
                 'add a department',
                 'add a role',
                 'add an employee',
-                'update employee role'
+                'update employee role',
+                'quit'
             ]
     }
 ]
@@ -60,7 +61,7 @@ const addEmpPrompts = [
     {
         type: "input",
         name: "roleId",
-        message: "role?"
+        message: "role ID?"
         
     },
     {
@@ -70,9 +71,36 @@ const addEmpPrompts = [
         
     },
 ]
+const updateRolePrompts = [
+    {
+        type: "input",
+        name: "qNewId",
+        message: "role number to update?"
+        
+    },
+    {
+        type: "input",
+        name: "newTitle",
+        message: "new title?"
+        
+    },
+    {
+        type: "input",
+        name: "newSalary",
+        message: "new salary?"
+        
+    },
+    {
+        type: "input",
+        name: "newId",
+        message: "new department ID?"
+        
+    }
+]
 
 
 exports.menuPrompts = menuPrompts
 exports.addDeptPrompts = addDeptPrompts
 exports.addRolePrompts = addRolePrompts
 exports.addEmpPrompts = addEmpPrompts
+exports.updateRolePrompts = updateRolePrompts
