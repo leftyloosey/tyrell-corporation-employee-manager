@@ -10,6 +10,10 @@ const menuPrompts = [
                 'add a role',
                 'add an employee',
                 'update employee role',
+                'delete a department',
+                'delete a role',
+                'delete an employee',
+                'show employees by department',
                 'quit'
             ]
     }
@@ -97,6 +101,30 @@ const updateRolePrompts = [
         
     }
 ]
+const deleteDeptPrompts = [
+    {
+        type: "input",
+        name: "delDept",
+        message: "department number to delete?"
+        
+    },
+]
+const deleteRolePrompts = [
+    {
+        type: "input",
+        name: "delRole",
+        message: "role number to delete?"
+        
+    },
+]
+const deleteEmpPrompts = [
+    {
+        type: "input",
+        name: "delEmp",
+        message: "employee number to delete?"
+        
+    },
+]
 
 
 exports.menuPrompts = menuPrompts
@@ -104,3 +132,6 @@ exports.addDeptPrompts = addDeptPrompts
 exports.addRolePrompts = addRolePrompts
 exports.addEmpPrompts = addEmpPrompts
 exports.updateRolePrompts = updateRolePrompts
+exports.deleteDeptPrompts = deleteDeptPrompts
+exports.deleteRolePrompts = deleteRolePrompts
+exports.deleteEmpPrompts = deleteEmpPrompts
