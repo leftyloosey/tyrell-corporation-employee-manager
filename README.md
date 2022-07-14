@@ -11,3 +11,5 @@ parameters of each individual role, or delete it entirely. In kind, they can
 also delete by employee and department. 
 
 It uses the inquirer, mysql2, and console.table modules.
+
+![module 12 screenshot](/Users/davidhardin/Desktop/ch/ch12b/module12_screen.png)
